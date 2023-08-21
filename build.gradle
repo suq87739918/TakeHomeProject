@@ -28,7 +28,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation("org.hibernate:hibernate-spatial:6.2.7.Final")
 	implementation("net.postgis:postgis-jdbc:2021.1.0")
-    compileOnly 'org.projectlombok:lombok'
+	implementation("org.locationtech.jts:jts-core:1.19.0")
+	implementation('org.wololo:jts2geojson:0.18.1')
+	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
