@@ -1,6 +1,7 @@
 package com.TakeHomeProject.Exam.Controller;
 
 import com.TakeHomeProject.Exam.Service.DfwDemoService;
+import com.TakeHomeProject.Exam.Service.InterpolationData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -44,5 +45,10 @@ public class DfwDemoController {
     @GetMapping("/getPolygonCentroids")
     public List<String> getPolygonCentroids() {
         return service.getPolygonCentroids();
+    }
+
+    @GetMapping("/getInterpolations")
+    public List<InterpolationData> getInterpolations() {
+        return service.getPolygonInterpolations();
     }
 }

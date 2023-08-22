@@ -49,4 +49,29 @@ public class DfwDemoService {
         return repository.findPolygonCentroids();
     }
 
+    public List<InterpolationData> getPolygonInterpolations() {
+        double totalArea = repository.findTotalArea();
+        int totalPopulation = repository.findTotalPopulation();
+        List<Object[]> polygonData = repository.findPolygonDataWithInterpolation();
+
+        List<InterpolationData> interpolations = new ArrayList<>();
+        for (Object[] record : polygonData) {
+            String geoJSON = (String) record[0];
+            int population = (int) record[1];
+            double area = ((Number) record[2]).doubleValue();
+            String centroidGeoJSON = (String) record[3];
+
+            double interpolation = ((area / totalArea) * totalPopulation)/10;
+
+            InterpolationData data = new InterpolationData();
+            data.setGeoJSON(geoJSON);
+            data.setCentroid(centroidGeoJSON);
+            data.setInterpolation(interpolation);
+
+            interpolations.add(data);
+        }
+
+        return interpolations;
+    }
+
 }
