@@ -8,14 +8,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import net.postgis.jdbc.geometry.Geometry;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Entity
 @Table(name = "dfw_demo")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@CrossOrigin(origins = "http://localhost:3000")
 public class DfwDemoEntity {
     @Id
     @Column(length = 32)

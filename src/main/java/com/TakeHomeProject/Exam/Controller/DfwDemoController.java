@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:3000")  // 处理跨域，react在端口3000运行
+@CrossOrigin(origins = "http://localhost:3000")
 public class DfwDemoController {
 
     @Autowired
@@ -35,7 +35,7 @@ public class DfwDemoController {
     public List<String> getGeoJSONPolygons() {
         try {
             List<String> geojsons = service.getGeoJSONPolygons();
-            System.out.println("GeoJSONs: " + geojsons); // debugging
+            System.out.println("GeoJSONs: " + geojsons);
             return geojsons;
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,19 +1,13 @@
 package com.TakeHomeProject.Exam.Service;
 
 import com.TakeHomeProject.Exam.Repository.DfwDemoRepository;
-import org.geolatte.geom.Feature;
-import org.geolatte.geom.FeatureCollection;
-import org.locationtech.jts.geom.Geometry;
+
 import org.locationtech.jts.io.ParseException;
-import org.locationtech.jts.io.WKBReader;
 import org.locationtech.jts.io.WKTReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.wololo.jts2geojson.GeoJSONWriter;
-
 import org.locationtech.jts.geom.Point;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
