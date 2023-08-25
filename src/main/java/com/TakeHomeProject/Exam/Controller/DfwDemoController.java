@@ -9,14 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.wololo.geojson.FeatureCollection;
 
-import java.util.Base64;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:3000")
 public class DfwDemoController {
 
     @Autowired
@@ -50,5 +48,15 @@ public class DfwDemoController {
     @GetMapping("/getInterpolations")
     public List<InterpolationData> getInterpolations() {
         return service.getPolygonInterpolations();
+    }
+
+    @GetMapping("/getAverageIncomes")
+    public List<Double> getAverageIncomes() {
+        return service.getAverageIncomeForAllPolygons();
+    }
+
+    @GetMapping("/getIncomeAndPopulation")
+    public List<Map<String, Integer>> getIncomeAndPopulation() {
+        return service.getIncomeAndPopulation();
     }
 }

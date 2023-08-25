@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.locationtech.jts.geom.Point;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class DfwDemoService {
@@ -55,7 +57,7 @@ public class DfwDemoService {
             double area = ((Number) record[2]).doubleValue();
             String centroidGeoJSON = (String) record[3];
 
-            double interpolation = ((area / totalArea) * totalPopulation)/10;
+            double interpolation = ((area / totalArea) * totalPopulation)/100;
 
             InterpolationData data = new InterpolationData();
             data.setGeoJSON(geoJSON);
@@ -68,4 +70,38 @@ public class DfwDemoService {
         return interpolations;
     }
 
+    public List<Double> getAverageIncomeForAllPolygons() {
+        List<Object[]> incomeAndPopulationData = repository.findIncomeAndPopulationForAllPolygons();
+        List<Double> averageIncomes = new ArrayList<>();
+        for (Object[] record : incomeAndPopulationData) {
+            double income = ((Number) record[0]).doubleValue();
+            double population = ((Number) record[1]).doubleValue();  //避免精度损失
+
+            if (population == 0) {
+                averageIncomes.add(0.0);
+                continue;
+            }
+
+            double averageIncome = income / population;
+            averageIncomes.add(averageIncome);
+        }
+        return averageIncomes;
+    }
+    public List<Map<String, Integer>> getIncomeAndPopulation() {
+        List<Object[]> data = repository.findIncomeAndPopulation();
+        List<Map<String, Integer>> result = new ArrayList<>();
+
+        for (Object[] record : data) {
+            int income = (int) record[0];
+            int population = (int) record[1];
+
+            Map<String, Integer> map = new HashMap<>();
+            map.put("income", income);
+            map.put("population", population);
+
+            result.add(map);
+        }
+
+        return result;
+    }
 }
