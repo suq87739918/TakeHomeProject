@@ -13,7 +13,7 @@ This project is a full-stack web application that includes both frontend and bac
   - **Purpose**: Repository layer responsible for data persistence.
 
 #### `CorsConfig.java`
-  - **Purpose**: Configuration for CORS (Cross-Origin Resource Sharing) including for AWS.
+  - **Purpose**: Configuration for CORS (Cross-Origin Resource Sharing).
 
 #### `DfwDemoEntity.java`
   - **Purpose**: Defines the database entity.
